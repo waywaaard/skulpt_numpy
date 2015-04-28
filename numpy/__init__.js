@@ -792,6 +792,15 @@ var $builtinmodule = function (name) {
   tanh_f.$defaults = [0, new Sk.builtin.list([])];
   mod.tanh = new Sk.builtin.func(tanh_f);
 
+  // Exponential
+  var exp_f = function (x, out) {
+    Sk.builtin.pyCheckArgs("exp", arguments, 1, 2);
+    return callTrigonometricFunc(x, np.math ? np.math.exp : Math.exp);
+  };
+  exp_f.co_varnames = ['x', 'out'];
+  exp_f.$defaults = [0, new Sk.builtin.list([])];
+  mod.exp = new Sk.builtin.func(exp_f);
+
   /* Simple reimplementation of the linspace function
    * http://docs.scipy.org/doc/numpy/reference/generated/numpy.linspace.html
    */
