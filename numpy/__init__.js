@@ -946,7 +946,7 @@ var $builtinmodule = function (name) {
     };
 
     function Internal_DType_To_Num(dtype) {
-        var name = Sk.abstr.typeName(dtype);
+        var name = dtype.prototype && dtype.prototype.tp$name;
         var num = Internal_TypeTable[name];
 
         if (num == null) {
